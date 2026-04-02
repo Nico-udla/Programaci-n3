@@ -2,16 +2,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Post {
-    public Post(String url) {
-    }
+    private String url;
+    private LocalDateTime fecha;
+    private int contLikes;
 
-    private class post{
-        private String url;
-        private LocalDateTime fecha;
-
-        public post(String url) {
+        public Post(String url) {
             this.url = url;
             fecha = LocalDateTime.now();
+            contLikes=0;
         }
 
         public String getUrl() {
@@ -29,11 +27,19 @@ public class Post {
         public void setFecha(LocalDateTime fecha) {
             this.fecha = fecha;
         }
+
+        public void aumentarLikes(){
+            contLikes++;
+        }
+        public void resetearLikes(){
+            contLikes = 0;
+        }
+
         @Override
         public String toString() {
             return "Url: " + url + ", fecha = " +
-                    fecha.format(DateTimeFormatter.ofPattern("dd/mm/yyyy HH:mm:ss"))+"\n";
+                    fecha.format(DateTimeFormatter.ofPattern("dd/mm/yyyy HH:mm:ss"))+ "Likes" + contLikes+ "\n";
+
         }
 
-    }
 }
